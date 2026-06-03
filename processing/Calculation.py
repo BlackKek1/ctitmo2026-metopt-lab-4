@@ -55,7 +55,8 @@ class Calculation:
       'h_calls': int(getattr(res, 'hess_calls', 0)),
       'status': str(status).lower(),
       'f_opt': Calculation._to_float(getattr(res, 'f_opt', np.nan)),
-      'grad_norm': Calculation._to_float(np.linalg.norm(func.compute_grad_without_increment(x_opt))) if x_opt.size else np.nan,
+      'grad_norm': Calculation._to_float(
+        np.linalg.norm(func.compute_grad_without_increment(x_opt))) if x_opt.size else np.nan,
       'x_opt': Calculation._format_vec(x_opt) if x_opt.size else '',
     }
 
@@ -114,7 +115,7 @@ class Calculation:
     optimizers = sorted(set(r['optimizer'] for r in rows))
 
     for metric_key, metric_name in metrics:
-      plt.figure(figsize=(8, 5))
+      plt.figure(figsize=plt.rcParams['figure.figsize'])
 
       for opt_name in optimizers:
         cur = [r for r in rows if r['optimizer'] == opt_name]
@@ -148,7 +149,7 @@ class Calculation:
       for y in ys
     ])
 
-    plt.figure(figsize=(6.8, 5.6))
+    plt.figure(figsize=plt.rcParams['figure.figsize'])
 
     if func.name == 'rosenbrock':
       levels = np.logspace(-1, 3, 18)
@@ -159,7 +160,7 @@ class Calculation:
     plt.clabel(cs, inline=True, fontsize=7)
     plt.plot(traj[:, 0], traj[:, 1], 'o--', markersize=3, linewidth=1.2)
     plt.scatter([traj[0, 0]], [traj[0, 1]], marker='o')
-    plt.scatter([traj[-1, 0]], [traj[-1, 1]], marker='x', s=80)
+    plt.scatter([traj[-1, 0]], [traj[-1, 1]], marker='x', s=160)
     plt.title(title)
     plt.xlabel('x1')
     plt.ylabel('x2')
@@ -281,7 +282,7 @@ class Calculation:
 
     Calculation.print_table(rows, 'l-bfgs memory experiment')
 
-    plt.figure(figsize=(7, 5))
+    plt.figure(figsize=plt.rcParams['figure.figsize'])
     for metric_key, metric_name in [('it', 'iterations'), ('f_calls', 'function calls'), ('g_calls', 'gradient calls')]:
       plt.plot([r['m'] for r in rows], [r[metric_key] for r in rows], marker='o', label=metric_name)
 
