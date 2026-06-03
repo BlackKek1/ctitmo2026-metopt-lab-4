@@ -1,23 +1,21 @@
 import numpy as np
 
-from functions.FunctionRealizations import (
-  make_quadratic,
-  Rosenbrock,
-  Himmelblau,
-  Ackley,
-)
-from optimizators.OptimizatorsRealizations import (
-  QuadraticConjugateGradient,
-  FletcherReevesCG,
-  PolakRibiereCG,
-  NewtonCholesky,
-  NewtonDirectionChoice,
-  PowellDogLeg,
-  DFP,
-  BFGS,
-  LBFGS,
-  SciPyNewtonCG,
-)
+from functions.Ackley import Ackley
+from functions.Himmelblau import Himmelblau
+from functions.QuadraticFunction import make_quadratic
+from functions.Rosenbrock import Rosenbrock
+
+from optimizators.BFGS import BFGS
+from optimizators.DFP import DFP
+from optimizators.FletcherReevesCG import FletcherReevesCG
+from optimizators.LBFGS import LBFGS
+from optimizators.NewtonCholesky import NewtonCholesky
+from optimizators.NewtonDirectionChoice import NewtonDirectionChoice
+from optimizators.PolakRibiereCG import PolakRibiereCG
+from optimizators.PowellDogLeg import PowellDogLeg
+from optimizators.QuadraticConjugateGradient import QuadraticConjugateGradient
+from optimizators.SciPyNewtonCG import SciPyNewtonCG
+
 from processing.Calculation import Calculation
 
 
@@ -133,6 +131,7 @@ def main():
     ms=[2, 5, 10, 20, 40],
     eps=_EPS,
   )
+
 
 if __name__ == '__main__':
   main()

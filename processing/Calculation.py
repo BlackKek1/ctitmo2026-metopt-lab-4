@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 from tabulate import tabulate
 
 from functions.BaseFunction import BaseFunction
-from functions.FunctionRealizations import make_quadratic
+from functions.QuadraticFunction import make_quadratic
 from optimizators.BaseOptimizer import BaseOptimizer
-from optimizators.OptimizatorsRealizations import LBFGS
+from optimizators.LBFGS import LBFGS
 
 
 class Calculation:
